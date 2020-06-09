@@ -11,6 +11,6 @@ class Todo(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)    #need this to distinguish between different users' todos app
 
 
-#name model objects 
+#name model objects in django/admin database
     def __str__(self):
         return self.title

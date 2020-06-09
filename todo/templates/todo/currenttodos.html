@@ -7,9 +7,12 @@ Current
 
 <ul>         
     {% for todo in todos %}
-    <!-- put bold in todo that is marked important-->
-    <li>{% if todo.important %}<b>{% endif %}{{ todo.title }}{% if todo.important %}</b>{% endif %}
+    <!-- put bold in todo that is marked important and add a link to the list-->
+    <li>
+        <a href="{% url 'viewtodo' todo.id %}">
+        {% if todo.important %}<b>{% endif %}{{ todo.title }}{% if todo.important %}</b>{% endif %}
         {% if todo.memo %} - {{ todo.memo }}{% endif %}
+        </a>
     </li>
     {% endfor %}
 
