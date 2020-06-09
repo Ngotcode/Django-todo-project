@@ -92,6 +92,5 @@ def completetodo(request, todo_pk):
 def deletetodo(request, todo_pk):
     todo = get_object_or_404(Todo, pk=todo_pk, user=request.user)     #pass in Todo clas, and pk-primary key
     if request.method == 'POST':
-        todo.datecompleted = timezone.now()
         todo.delete()
         return redirect('currenttodos')
