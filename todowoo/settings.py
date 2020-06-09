@@ -119,3 +119,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#this line directs the user to the login page when user get a 404 error before sign up or log in
+LOGIN_URL = '/login'      
