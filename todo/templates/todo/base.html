@@ -7,10 +7,13 @@ Logged In as {{ user.username }}
  <!-- <a href="#"=>Logout</a>      -->
  <!-- <a href="{% url 'logoutuser' %}">Logout</a>  -->
  
+ <a href="{% url 'createtodo' %}">Create</a>
+ <a href="{% url 'currenttodos' %}">Current</a>
+ <a href="{% url 'completedtodos' %}">Completed</a>
+
 <form action="{% url 'logoutuser' %}" method="POST">      <!-- could only logout if it's POST request-->
     {% csrf_token %}        <!-- need this to avoid certification error-->
     <button type="submit">Logout</button>
-
 </form>
 
 {% else %}
@@ -23,6 +26,5 @@ Logged In as {{ user.username }}
 <br>
 
 {% block content %}
-
 
 {% endblock %}
