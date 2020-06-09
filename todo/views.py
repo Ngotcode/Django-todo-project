@@ -69,6 +69,13 @@ def currenttodos(request):
     #todos: Todo.objects.all()        #this list todos for all users
     return render(request, 'todo/currenttodos.html', {'todos':todos})
 
+def completedtodos(request):
+    todos = Todo.objects.filter(user=request.user, datecompleted__isnull=False).order_by('-datecompleted')  #order by recent date first  
+    #todos = Todo.objects.filter(user=request.user, datecompleted__isnull=False)
+    #todos: Todo.objects.all()        #this list todos for all users
+    return render(request, 'todo/completedtodos.html', {'todos':todos})
+
+
 def viewtodo(request, todo_pk):
     todo = get_object_or_404(Todo, pk=todo_pk, user=request.user)     #pass in Todo clas, and pk-primary key
     if request.method == 'GET':
@@ -94,3 +101,4 @@ def deletetodo(request, todo_pk):
     if request.method == 'POST':
         todo.delete()
         return redirect('currenttodos')
+
